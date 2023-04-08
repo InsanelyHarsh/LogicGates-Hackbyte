@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
-const schema = mongoose.schema;
+const { Decimal128 } = require('mongodb');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const UserSchema = new schema({
+const UserSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -15,11 +16,9 @@ const UserSchema = new schema({
         required: true,
     },
     password: {
-        type: String, required: true
-    },
-    authToken: {
         type: String,
-        required: true
+        required: true,
+        select: false
     },
     experience: [{
         company: {
@@ -47,7 +46,7 @@ const UserSchema = new schema({
     tags: [String],
     posts: [
         {
-            type: schema.types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "post"
         }
     ],
@@ -56,7 +55,8 @@ const UserSchema = new schema({
         required: true
     },
     rating: {
-        type: Float32Array
+        type: Decimal128
+
     }
 })
 

@@ -8,6 +8,7 @@ const app = express();
 const io = socketIO();
 const PORT = 5000;
 ConnectToMongo();
+app.use(express.json());
 app.use('/api/user', require('./Routes/User'))
 app.use('/', (req, res) => {
     res.send("HOME")
