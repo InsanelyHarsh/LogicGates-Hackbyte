@@ -184,6 +184,7 @@ extension MediaManager: AVCaptureVideoDataOutputSampleBufferDelegate {
         DispatchQueue.main.async { [unowned self] in
             self.frame.send(cgImage)
         }
+        
     }
     
     private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CGImage? {
@@ -197,15 +198,41 @@ extension MediaManager: AVCaptureVideoDataOutputSampleBufferDelegate {
 }
 
 
-class ljdl:NSObject{
+class Media:NSObject{
     
     var captureSession: AVCaptureSession? = nil
     var camera: AVCaptureDevice? = nil
     var microphone: AVCaptureDevice? = nil
-    var videoOutput: AVCaptureFileOutput? = nil
-    var previewLayer: AVCaptureVideoPreviewLayer? = nil
+    
+    @Published var videoOutput: AVCaptureFileOutput? = nil
+    @Published var previewLayer: AVCaptureVideoPreviewLayer? = nil
 
-    func findDevices() {
+    private let sessionQueue = DispatchQueue(label: "sessionQueue")
+    
+    func checkPermission(for mediaType:AVMediaType) ->Bool {
+        switch AVCaptureDevice.authorizationStatus(for: mediaType) {
+        case .authorized: // The user has previously granted access to the camera.
+            return true
+            
+        case .notDetermined: // The user has not yet been asked for camera access.
+            return requestPermission(for: mediaType)
+            
+            // Combine the two other cases into the default case
+        default:
+            return false
+        }
+    }
+    
+    private func requestPermission(for mediaType:AVMediaType)->Bool {
+        var isGranted:Bool = false
+        AVCaptureDevice.requestAccess(for: mediaType) { granted in
+            isGranted = granted
+        }
+        return isGranted
+    }
+    
+    
+    private func findDevices() {
         camera = nil
         microphone = nil
 
@@ -213,9 +240,11 @@ class ljdl:NSObject{
         let session = AVCaptureDevice.DiscoverySession.init(deviceTypes:[.builtInWideAngleCamera],
                 mediaType: AVMediaType.video, position: AVCaptureDevice.Position.back)
         var devices = (session.devices.compactMap{$0})
+        
         //Search for microphone
         let asession = AVCaptureDevice.DiscoverySession.init(deviceTypes:[.builtInMicrophone],
                 mediaType: AVMediaType.audio, position: AVCaptureDevice.Position.unspecified)
+        
         //Combine all devices into one list
         devices.append(contentsOf: asession.devices.compactMap{$0})
         for device in devices {
@@ -223,11 +252,12 @@ class ljdl:NSObject{
                 do {
                     try device.lockForConfiguration()
                     device.focusMode = .continuousAutoFocus
-//                    device.flashMode = .
+//                    device.flashMode = .off
                     device.whiteBalanceMode = .continuousAutoWhiteBalance
                     device.unlockForConfiguration()
                     camera = device
                 } catch {
+                    
                 }
             }
             if device.hasMediaType(.audio) {
@@ -240,12 +270,15 @@ class ljdl:NSObject{
         captureSession = AVCaptureSession()
         guard let captureSession = captureSession else {return false}
 
-        captureSession.sessionPreset = .hd4K3840x2160
+        captureSession.sessionPreset = .hd1920x1080 //hd4K3840x2160
         findDevices()
 
         guard let camera = camera else { return false}
         do {
             let cameraInput = try AVCaptureDeviceInput(device: camera)
+            
+            guard captureSession.canAddInput(cameraInput) else { return false}
+            
             captureSession.addInput(cameraInput)
         } catch {
             self.camera = nil
@@ -255,6 +288,7 @@ class ljdl:NSObject{
         if let audio = microphone {
             do {
                 let audioInput = try AVCaptureDeviceInput(device: audio)
+                guard captureSession.canAddInput(audioInput) else { return false }
                 captureSession.addInput(audioInput)
             } catch {
             }
@@ -262,12 +296,17 @@ class ljdl:NSObject{
 
         videoOutput = AVCaptureMovieFileOutput()
         if captureSession.canAddOutput(videoOutput!) {
+            
             captureSession.addOutput(videoOutput!)
-            captureSession.startRunning()
+            sessionQueue.async {
+                captureSession.startRunning()
+            }
             videoOutput?.connection(with: .video)?.videoOrientation = .landscapeRight
+            
+            
             previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             previewLayer?.videoGravity = .resizeAspect
-            previewLayer?.connection?.videoOrientation = .landscapeRight
+            previewLayer?.connection?.videoOrientation = .portrait
             return true
         }
 
@@ -284,12 +323,14 @@ class ljdl:NSObject{
         return true
     }
     
+    
     func getVideoName()->String{
         return "----"
     }
 }
 
-extension ljdl:AVCaptureFileOutputRecordingDelegate{
+extension Media:AVCaptureFileOutputRecordingDelegate{
+    
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         
     }
