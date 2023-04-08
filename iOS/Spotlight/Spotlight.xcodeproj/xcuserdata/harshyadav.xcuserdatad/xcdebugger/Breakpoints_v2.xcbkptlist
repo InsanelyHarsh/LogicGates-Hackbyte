@@ -110,8 +110,8 @@
             filePath = "Spotlight/Managers/Media/MediaManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "initVideoRecorder()"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "Spotlight/Managers/Media/MediaManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "initVideoRecorder()"
             landmarkType = "7">
             <Locations>
@@ -190,8 +190,8 @@
             filePath = "Spotlight/Managers/Media/MediaManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "initVideoRecorder()"
             landmarkType = "7">
             <Locations>

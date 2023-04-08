@@ -10,7 +10,7 @@ import Foundation
 
 ///Handles Tab of Application
 class TabManager:ObservableObject{
-    @Published var currentTab:TabRoutes = .upload
+    @Published var currentTab:TabRoutes = .home
     
     func changeTab(to newTab:TabRoutes){
         self.currentTab = newTab

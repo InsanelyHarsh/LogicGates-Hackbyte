@@ -45,7 +45,7 @@ struct UploadMediaView: View {
         .overlay(alignment: .bottom){
             HStack(){
                 Button {
-                    //cameraa
+                    uploadVM.flipCamera()
                 } label: {
                     Image(systemName: "repeat.circle")
                         .resizable()
