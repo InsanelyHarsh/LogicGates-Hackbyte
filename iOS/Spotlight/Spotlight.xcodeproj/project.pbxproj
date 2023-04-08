@@ -44,6 +44,9 @@
 		B019D62529E119EF00713A63 /* TabRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019D62429E119EF00713A63 /* TabRoutes.swift */; };
 		B019D62729E11C2700713A63 /* CustomPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019D62629E11C2700713A63 /* CustomPasswordField.swift */; };
 		B019D62A29E11D6200713A63 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019D62929E11D6200713A63 /* ForgotPasswordViewModel.swift */; };
+		B019D62D29E120BF00713A63 /* PlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019D62C29E120BF00713A63 /* PlaybackManager.swift */; };
+		B019D62F29E1367F00713A63 /* MediaPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019D62E29E1367F00713A63 /* MediaPreview.swift */; };
+		B019D63329E14E5E00713A63 /* UploadMediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019D63229E14E5E00713A63 /* UploadMediaView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +88,9 @@
 		B019D62429E119EF00713A63 /* TabRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRoutes.swift; sourceTree = "<group>"; };
 		B019D62629E11C2700713A63 /* CustomPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPasswordField.swift; sourceTree = "<group>"; };
 		B019D62929E11D6200713A63 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		B019D62C29E120BF00713A63 /* PlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackManager.swift; sourceTree = "<group>"; };
+		B019D62E29E1367F00713A63 /* MediaPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPreview.swift; sourceTree = "<group>"; };
+		B019D63229E14E5E00713A63 /* UploadMediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMediaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 			children = (
 				B019D5FB29E0DD9D00713A63 /* SessionManager.swift */,
 				B019D60229E0DE6900713A63 /* NetworkingManager.swift */,
+				B019D62B29E1206600713A63 /* MediaPlackback */,
 				B019D5DF29E0B1FA00713A63 /* Media */,
 			);
 			path = Managers;
@@ -184,8 +191,11 @@
 		B019D5DC29E0A5ED00713A63 /* Upload */ = {
 			isa = PBXGroup;
 			children = (
+				B019D63129E14E0100713A63 /* UploadMedia */,
+				B019D63029E14DEC00713A63 /* CaptureMedia */,
 				B019D5DD29E0A5FB00713A63 /* UploadView.swift */,
 				B019D5E229E0B3E300713A63 /* UploadViewModel.swift */,
+				B019D62E29E1367F00713A63 /* MediaPreview.swift */,
 			);
 			path = Upload;
 			sourceTree = "<group>";
@@ -302,6 +312,29 @@
 			path = TabRoute;
 			sourceTree = "<group>";
 		};
+		B019D62B29E1206600713A63 /* MediaPlackback */ = {
+			isa = PBXGroup;
+			children = (
+				B019D62C29E120BF00713A63 /* PlaybackManager.swift */,
+			);
+			path = MediaPlackback;
+			sourceTree = "<group>";
+		};
+		B019D63029E14DEC00713A63 /* CaptureMedia */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CaptureMedia;
+			sourceTree = "<group>";
+		};
+		B019D63129E14E0100713A63 /* UploadMedia */ = {
+			isa = PBXGroup;
+			children = (
+				B019D63229E14E5E00713A63 /* UploadMediaView.swift */,
+			);
+			path = UploadMedia;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -374,6 +407,8 @@
 			files = (
 				B019D60129E0DE1100713A63 /* Logger.swift in Sources */,
 				B019D5F829E0DC8000713A63 /* CustomField.swift in Sources */,
+				B019D63329E14E5E00713A63 /* UploadMediaView.swift in Sources */,
+				B019D62D29E120BF00713A63 /* PlaybackManager.swift in Sources */,
 				B019D5E629E0D4B300713A63 /* RootView.swift in Sources */,
 				B019D5E329E0B3E300713A63 /* UploadViewModel.swift in Sources */,
 				B019D61329E0E23E00713A63 /* CreateAccountViewModel.swift in Sources */,
@@ -405,6 +440,7 @@
 				B019D5C429E09E5A00713A63 /* SpotlightApp.swift in Sources */,
 				B019D62A29E11D6200713A63 /* ForgotPasswordViewModel.swift in Sources */,
 				B019D5EA29E0D4FC00713A63 /* OnBoardingLayoutView.swift in Sources */,
+				B019D62F29E1367F00713A63 /* MediaPreview.swift in Sources */,
 				B019D5FC29E0DD9D00713A63 /* SessionManager.swift in Sources */,
 				B019D5FF29E0DDCD00713A63 /* Constants.swift in Sources */,
 			);

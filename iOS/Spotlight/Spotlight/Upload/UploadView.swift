@@ -8,13 +8,32 @@
 import SwiftUI
 
 struct UploadView: View {
-    @StateObject var uploadVM = UploadViewModel()
+    @State var captureMedia:Bool = false
     var body: some View{
-//        NavigationStack{
-            uploadVM.feedImage
-//        }
-        .navigationTitle("Settings")
-        .navigationBarTitleDisplayMode(.inline)
+        VStack{
+            Text("Show Your Talent")
+                .font(.largeTitle)
+                .bold()
+            
+            
+            HStack{
+                Spacer()
+                
+                CustomButton(buttonTitle: "Capture Media") {
+                    captureMedia.toggle()
+                }
+                
+                Spacer()
+                
+                CustomButton(isPrimary: false, buttonTitle: "Upload Media") {
+                    
+                }
+                Spacer()
+            }
+        }
+        .fullScreenCover(isPresented: $captureMedia) {
+            UploadMediaView()
+        }
     }
 }
 

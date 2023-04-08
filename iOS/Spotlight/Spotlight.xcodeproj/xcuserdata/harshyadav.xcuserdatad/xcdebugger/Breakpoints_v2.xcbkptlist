@@ -7,166 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "200E7DD7-CA6E-485E-A226-B382DA540101"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Spotlight/Managers/Media/MediaManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "imageFromSampleBuffer(sampleBuffer:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "200E7DD7-CA6E-485E-A226-B382DA540101 - 95d6a2d99dba86d1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Spotlight.MediaManager.imageFromSampleBuffer(sampleBuffer: __C.CMSampleBufferRef) -&gt; Swift.Optional&lt;__C.CGImageRef&gt;"
-                  moduleName = "Spotlight"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "200E7DD7-CA6E-485E-A226-B382DA540101 - 95d6a2d99dbab460"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Spotlight.MediaManager.imageFromSampleBuffer(sampleBuffer: __C.CMSampleBufferRef) -&gt; Swift.Optional&lt;__C.CGImageRef&gt;"
-                  moduleName = "Spotlight"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "190"
-                  endingLineNumber = "190"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "954A3204-3790-48E0-B9B5-B36058C2B621"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Spotlight/Managers/Media/MediaManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "captureOutput(_:didOutput:from:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "954A3204-3790-48E0-B9B5-B36058C2B621 - c14ef3f8b7e18bac"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Spotlight.MediaManager.captureOutput(_: __C.AVCaptureOutput, didOutput: __C.CMSampleBufferRef, from: __C.AVCaptureConnection) -&gt; ()"
-                  moduleName = "Spotlight"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "244">
-               </Location>
-               <Location
-                  uuid = "954A3204-3790-48E0-B9B5-B36058C2B621 - c14ef3f8b7e1bd3f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Spotlight.MediaManager.captureOutput(_: __C.AVCaptureOutput, didOutput: __C.CMSampleBufferRef, from: __C.AVCaptureConnection) -&gt; ()"
-                  moduleName = "Spotlight"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "204">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EB461843-9391-4B37-B7CD-542698A2CA37"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Spotlight/Managers/Media/MediaManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "MediaManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8D50AA2D-86A2-476B-B1D4-48F1DBB9AAC9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Spotlight/Managers/Media/MediaManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "checkPermission(for:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8D50AA2D-86A2-476B-B1D4-48F1DBB9AAC9 - 32215cb92d1b29b2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Spotlight.MediaManager.checkPermission() -&gt; ()"
-                  moduleName = "Spotlight"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "8D50AA2D-86A2-476B-B1D4-48F1DBB9AAC9 - d352bb87914d8a28"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Spotlight.MediaManager.checkPermission(for: __C.AVMediaType) -&gt; ()"
-                  moduleName = "Spotlight"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "20589661-2FD3-450A-B016-FED83C76DFF0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -178,6 +18,38 @@
             endingLineNumber = "68"
             landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "20589661-2FD3-450A-B016-FED83C76DFF0 - 8f048e812cdfa4ef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotlight.OffsetPageView.Coordinator.scrollViewDidScroll(__C.UIScrollView) -&gt; ()"
+                  moduleName = "Spotlight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Onboarding/OffSetPageView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "20589661-2FD3-450A-B016-FED83C76DFF0 - 8f048e812cdfa4ef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotlight.OffsetPageView.Coordinator.scrollViewDidScroll(__C.UIScrollView) -&gt; ()"
+                  moduleName = "Spotlight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Onboarding/OffSetPageView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -194,6 +66,166 @@
             endingLineNumber = "22"
             landmarkName = "makeCoordinator()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B047EB57-A7CC-4986-90BD-EB84EBD36F4B - 634e29cbaed7933a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotlight.OffsetPageView.makeCoordinator() -&gt; Spotlight.OffsetPageView&lt;&#x3c4;_0_0&gt;.Coordinator"
+                  moduleName = "Spotlight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Onboarding/OffSetPageView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "B047EB57-A7CC-4986-90BD-EB84EBD36F4B - 634e29cbaed7933a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotlight.OffsetPageView.makeCoordinator() -&gt; Spotlight.OffsetPageView&lt;&#x3c4;_0_0&gt;.Coordinator"
+                  moduleName = "Spotlight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Onboarding/OffSetPageView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1FFABFD4-BA1E-468B-BE7D-184B2EF01884"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotlight/Managers/Media/MediaManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "initVideoRecorder()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BEBF0B1F-4F15-49A7-AFDF-C2230C7598A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotlight/Upload/UploadViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "startCamera()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E52F4C1D-9C86-49D6-92C1-1C6768C2AEE7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotlight/Managers/Media/MediaManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "initVideoRecorder()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E52F4C1D-9C86-49D6-92C1-1C6768C2AEE7 - e9f4c374974647f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotlight.Media.initVideoRecorder() -&gt; Swift.Bool"
+                  moduleName = "Spotlight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "299"
+                  endingLineNumber = "299"
+                  offsetFromSymbolStart = "784">
+               </Location>
+               <Location
+                  uuid = "E52F4C1D-9C86-49D6-92C1-1C6768C2AEE7 - e9f4c374974647c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotlight.Media.initVideoRecorder() -&gt; Swift.Bool"
+                  moduleName = "Spotlight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "298"
+                  endingLineNumber = "298"
+                  offsetFromSymbolStart = "784">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "448AC496-4165-413E-A648-DA4EAEF8FF64"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotlight/Managers/Media/MediaManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "initVideoRecorder()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "448AC496-4165-413E-A648-DA4EAEF8FF64 - e9f4c3749746448d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotlight.Media.initVideoRecorder() -&gt; Swift.Bool"
+                  moduleName = "Spotlight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "288"
+                  endingLineNumber = "288"
+                  offsetFromSymbolStart = "496">
+               </Location>
+               <Location
+                  uuid = "448AC496-4165-413E-A648-DA4EAEF8FF64 - e9f4c3749746448d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Spotlight.Media.initVideoRecorder() -&gt; Swift.Bool"
+                  moduleName = "Spotlight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/harshyadav/Desktop/Code/LogicGates-Hackbyte/iOS/Spotlight/Spotlight/Managers/Media/MediaManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "288"
+                  endingLineNumber = "288"
+                  offsetFromSymbolStart = "548">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
