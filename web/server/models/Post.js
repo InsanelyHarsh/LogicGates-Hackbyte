@@ -1,5 +1,6 @@
+const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose')
-const Schema = mongoose.schema;
+const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
     title: {
@@ -16,11 +17,22 @@ const PostSchema = new Schema({
         required: true
     },
     tags: [String],
-    createdAt: new Date(0),
     likes: {
-        type: number
-    }
+        type: Number
+    },
+    comments: [
+        {
+            CommentOwner: {
+                type: Schema.Types.ObjectId,
+                ref: 'user',
+            },
+            comment: {
+                type: String,
+            }
 
-})
+        }
+    ]
+
+}, { Timestamp: true })
 
 module.exports = Post = mongoose.model('post', PostSchema);

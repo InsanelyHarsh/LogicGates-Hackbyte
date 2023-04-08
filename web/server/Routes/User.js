@@ -2,8 +2,11 @@ const express = require('express');
 const createUser = require('./User/createUser');
 const Login = require('./User/Login');
 const { body } = require('express-validator');
+const fetchUser = require('../middlewares/fetchUser')
 const editUser = require('./User/editUser');
 const changePassword = require('./User/changePassword');
+const getUserByEmail = require('./User/getUserByEmail');
+const updatePreferences = require('./User/updatePreferences');
 
 const router = express.Router();
 
@@ -23,8 +26,18 @@ router.post('/login', body('email').isEmail(), Login);
 // @access private
 router.put('/edit', editUser);
 
-// desc Change Password
+// @desc Change Password
 // @data {oldPassword, newPassword}
 // @access private
-router.post('/changepassword', body('oldPassword').isStrongPassword(), body('newPassword').isStrongPassword() ,changePassword)
+router.post('/changepassword', body('oldPassword').isStrongPassword(), body('newPassword').isStrongPassword(), changePassword)
+
+// @desc get user by email
+// @data {email}
+// @access only to users 
+router.get('/getuserbyemail', getUserByEmail)
+
+// @desc update preferences
+// @data {preferences:[]}
+// @access private
+router.put('/updatepreferences', fetchUser, updatePreferences)
 module.exports = router
