@@ -74,4 +74,10 @@ class UploadViewModel:ObservableObject{
             //show alert
         }
     }
+    
+    func flipCamera(){
+        mediaManager.changePosition()
+        
+        startCamera()
+    }
 }
