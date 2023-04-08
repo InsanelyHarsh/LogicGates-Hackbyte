@@ -1,4 +1,5 @@
 require('dotenv').config
+const cors = require('cors')
 const express = require('express');
 const ConnectToMongo = require('./db/db');
 const socketIO = require('socket.io')
@@ -9,6 +10,7 @@ const io = socketIO();
 const PORT = 5000;
 ConnectToMongo();
 app.use(express.json());
+app.use(cors);
 
 
 app.use('/api/user', require('./Routes/User'));
