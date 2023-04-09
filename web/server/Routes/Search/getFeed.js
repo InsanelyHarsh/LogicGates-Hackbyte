@@ -1,64 +1,49 @@
 const User = require('../../models/User')
 const Post = require('../../models/Post')
-const recommend = require('collaborative-filter')
+const ContentBasedRecommender = require('content-based-recommender')
 
-const doesExists = (userTags, postTags) => {
-    let count = 0;
-    for (let i = 0; i < userTags.length; i++) {
-        for (let j = 0; j < postTags.length; j++) {
-            if (postTags[j] === userTags[i]) {
-                count++;
-            }
-        }
-    }
-    if (count > 0) return 1;
-    else return 0;
-}
-
-const createRatingMatrix = (users, posts) => {
-    const matrix = [];
-    for (let i = 0; i < users.length; i++) {
-        let userTags = users[i].tags;
-        userTags = userTags.concat(users[i].preferences);
-
-        const curr = [];
-        for (let j = 0; j < posts.length; j++) {
-            let postTags = posts[i].tags;
-            postTags = postTags.concat(posts[i].title.split(" "));
-            let isEngaging = doesExists(userTags, postTags);
-            curr.push(isEngaging);
-        }
-        matrix.push(curr);
-    }
-    return matrix;
-}
-const getInd = (users, id) => {
-    let result = -1;
-    for (let i = 0; i < users.length; i++) {
-        if (users.id === id) {
-            result = i;
-            break;
-        }
-    }
-    return result;
-}
 
 const getFeed = async (req, res) => {
     try {
+        const recommender = new ContentBasedRecommender({
+            minScore: 0.1,
+            maxSimilarDocuments: 100
+        });
         id = req.user.id;
-        const users = await User.find();
+        const user = await User.findById(id);
+        let userTags = user.tags;
+        userTags = userTags.concat(user.preferences);
+        const randomInd = Math.floor((Math.random() * 1000) % userTags.length);
+        const query = "epic";
         const posts = await Post.find();
-        let ratings = createRatingMatrix(users, posts);
+        let documents = [];
+        let queryPost = [];
+        for (let i = 0; i < posts.length; i++) {
+            let curr = {
+                id: (i + 1).toString(),
+                content:
 
-        const coMatrix = recommend.createCoMatrix(ratings, users.length, posts.length);
-        const userInd = getInd(users, id);
-        const result = recommend.getRecommendations(ratings, coMatrix, userInd);
-        console.log(result);
-        return res.status(200).json({ success: true, result });
+                    posts[i].toString()
+            };
+            if (posts[i].tags.includes(query)) {
+                queryPost.push(curr)
+            }
+            documents.push(curr);
+        }
+        console.log(12)
+        console.log(documents);
+        recommender.train(documents);
+        const similarDocuments = recommender.getSimilarDocuments(queryPost[0].id, 0, 20);
+        result = [];
+
+        console.log(similarDocuments);
+
+
+        return res.status(200).json({ success: true, result: similarDocuments });
 
 
     } catch (err) {
-        return res.status(500).json({ success: true, message: "Internal Server Error", error: err.message });
+        return res.status(500).json({ success: false, message: "Internal Server Error", error: err.message });
     }
 
 }
