@@ -15,8 +15,9 @@ We provide a seamless experience for artists to showcase their skills and mainta
 
 ## Platforms :- 
 <ul>
-<li> Andriod </li>
-<li> iOS</li>
+<li><a href="https://github.com/InsanelyHarsh/LogicGates-Hackbyte/blob/main/README_ANDRIOD.md"> Andriod</a> </li>
+<li> <a href="https://github.com/InsanelyHarsh/LogicGates-Hackbyte/blob/main/README_IOS.md"> iOS </a> </li>
+<li> <a href="https://github.com/InsanelyHarsh/LogicGates-Hackbyte/blob/main/README_BACKEND" >Backend </a> </li>
 </ul>
 <hr/>
 
