@@ -23,6 +23,14 @@ struct MainView: View {
                     .tag(TabRoutes.home)
                 
                 
+                SearchView()
+                    .tabItem {
+                        VStack{
+                            Image(systemName: "magnifyingglass")
+                            Text("Search")
+                        }
+                    }
+                
                 UploadView()
                     .tabItem {
                         VStack{
@@ -35,12 +43,13 @@ struct MainView: View {
                 SettingView()
                     .tabItem {
                         VStack{
-                            Image(systemName: "gear")
+                            Image(systemName:"gear")
                             Text("Settings")
                         }
                     }
                     .tag(TabRoutes.settting)
             }
+//            .tint(.white)
             .navigationTitle(tabManager.currentTab.navTitle)
             .navigationBarTitleDisplayMode(.inline)
             

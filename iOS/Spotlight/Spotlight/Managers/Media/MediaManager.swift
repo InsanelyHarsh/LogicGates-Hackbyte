@@ -121,6 +121,7 @@ class MediaManager: NSObject{
         let cameras = session.devices.compactMap{$0}
         
         for camera in cameras {
+            
             if camera.position == .front {
                 self.frontCamera = camera
             }
@@ -132,6 +133,8 @@ class MediaManager: NSObject{
                 camera.unlockForConfiguration()
             }
         }
+        
+        
     }
     
     func configure(){
@@ -201,7 +204,11 @@ extension MediaManager: AVCaptureVideoDataOutputSampleBufferDelegate {
 class Media:NSObject{
     
     var captureSession: AVCaptureSession? = nil
-    var camera: AVCaptureDevice? = nil
+    
+    var isRearCameraPosition:Bool = true
+    var frontCamera:AVCaptureDevice? = nil
+    var rearCamera: AVCaptureDevice? = nil //default
+    
     var microphone: AVCaptureDevice? = nil
     
     @Published var videoOutput: AVCaptureFileOutput? = nil
@@ -209,6 +216,21 @@ class Media:NSObject{
 
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
     
+    
+    func changePosition(){
+        //drop session
+        guard captureSession != nil else { return }
+        
+        if(captureSession!.isRunning){
+            self.captureSession!.stopRunning()
+            
+            for ip in self.captureSession!.inputs{
+                self.captureSession!.removeInput(ip)
+            }
+            isRearCameraPosition.toggle()
+        }
+        //start again
+    }
     func checkPermission(for mediaType:AVMediaType) ->Bool {
         switch AVCaptureDevice.authorizationStatus(for: mediaType) {
         case .authorized: // The user has previously granted access to the camera.
@@ -233,12 +255,14 @@ class Media:NSObject{
     
     
     private func findDevices() {
-        camera = nil
+        frontCamera = nil
+        rearCamera = nil
+        
         microphone = nil
 
         //Search for video media type and we need back camera only
         let session = AVCaptureDevice.DiscoverySession.init(deviceTypes:[.builtInWideAngleCamera],
-                mediaType: AVMediaType.video, position: AVCaptureDevice.Position.back)
+                                                            mediaType: AVMediaType.video, position: isRearCameraPosition ? AVCaptureDevice.Position.back : AVCaptureDevice.Position.front)
         var devices = (session.devices.compactMap{$0})
         
         //Search for microphone
@@ -248,14 +272,25 @@ class Media:NSObject{
         //Combine all devices into one list
         devices.append(contentsOf: asession.devices.compactMap{$0})
         for device in devices {
-            if device.position == .back {
+            if (device.position == .back){
                 do {
                     try device.lockForConfiguration()
                     device.focusMode = .continuousAutoFocus
-//                    device.flashMode = .off
                     device.whiteBalanceMode = .continuousAutoWhiteBalance
                     device.unlockForConfiguration()
-                    camera = device
+                    rearCamera = device
+                } catch {
+                    
+                }
+            }
+            else if(device.position == .front){
+                
+                do {
+                    try device.lockForConfiguration()
+
+                    device.whiteBalanceMode = .continuousAutoWhiteBalance
+                    device.unlockForConfiguration()
+                    frontCamera = device
                 } catch {
                     
                 }
@@ -271,18 +306,33 @@ class Media:NSObject{
         guard let captureSession = captureSession else {return false}
 
         captureSession.sessionPreset = .hd1920x1080 //hd4K3840x2160
+        
         findDevices()
-
-        guard let camera = camera else { return false}
-        do {
-            let cameraInput = try AVCaptureDeviceInput(device: camera)
-            
-            guard captureSession.canAddInput(cameraInput) else { return false}
-            
-            captureSession.addInput(cameraInput)
-        } catch {
-            self.camera = nil
-            return false
+        
+        if let frontCamera = frontCamera{
+            do {
+                let cameraInput = try AVCaptureDeviceInput(device: frontCamera)
+                
+                guard captureSession.canAddInput(cameraInput) else { return false}
+                
+                captureSession.addInput(cameraInput)
+            } catch {
+                self.frontCamera = nil
+                return false
+            }
+        }
+        
+        if let rearCamera = rearCamera{
+            do {
+                let cameraInput = try AVCaptureDeviceInput(device: rearCamera)
+                
+                guard captureSession.canAddInput(cameraInput) else { return false}
+                
+                captureSession.addInput(cameraInput)
+            } catch {
+                self.rearCamera = nil
+                return false
+            }
         }
 
         if let audio = microphone {
@@ -313,6 +363,10 @@ class Media:NSObject{
         return false
     }
 
+    
+    func revertCamera(){
+//        self.camera?.deviceType ==
+    }
     func startRecording()->Bool {
         guard let captureSession = captureSession, captureSession.isRunning else {return false}
         
