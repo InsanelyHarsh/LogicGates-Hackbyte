@@ -31,11 +31,13 @@ struct MainView: View {
                         }
                     }
                     .tag(TabRoutes.search)
-                UploadView()
+                
+                
+                NewPostView()
                     .tabItem {
                         VStack{
                             Image(systemName: "plus")
-                            Text("Upload")
+                            Text("Post")
                         }
                     }
                     .tag(TabRoutes.upload)

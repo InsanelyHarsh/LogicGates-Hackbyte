@@ -8,14 +8,14 @@
 import SwiftUI
 import PhotosUI
 struct UploadMediaView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     @StateObject var uploadMediaVM:UploadMediaViewModel = UploadMediaViewModel()
     var body: some View {
         NavigationStack{
             VStack{
-                if let picker = uploadMediaVM.picker{
-                    //show selected media
-                }
+//                if let picker = uploadMediaVM.picker{
+//                    //show selected media
+//                }
                 Spacer()
                 PhotosPicker(selection: $uploadMediaVM.picker,matching: .videos) {
                     HStack{
@@ -33,15 +33,15 @@ struct UploadMediaView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Show Talent")
             
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        dismiss.callAsFunction()
-                    } label: {
-                        Image(systemName: "xmark.circle")
-                    }.tint(.black)
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button {
+//                        dismiss.callAsFunction()
+//                    } label: {
+//                        Image(systemName: "xmark.circle")
+//                    }.tint(.black)
+//                }
+//            }
         }
     }
 }
