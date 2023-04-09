@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UploadView: View {
     @State var captureMedia:Bool = false
+    @State var uploadMedia:Bool = false
     var body: some View{
         VStack{
             Text("Show Your Talent")
@@ -26,13 +27,16 @@ struct UploadView: View {
                 Spacer()
                 
                 CustomButton(isPrimary: false, buttonTitle: "Upload Media") {
-                    
+                    uploadMedia.toggle()
                 }
                 Spacer()
             }
         }
-        .fullScreenCover(isPresented: $captureMedia) {
+        .fullScreenCover(isPresented: $uploadMedia){
             UploadMediaView()
+        }
+        .fullScreenCover(isPresented: $captureMedia) {
+            CaptureMediaView()
         }
     }
 }

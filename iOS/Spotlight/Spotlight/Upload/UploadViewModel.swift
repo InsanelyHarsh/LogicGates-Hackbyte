@@ -68,16 +68,15 @@ class UploadViewModel:ObservableObject{
             }
             else{
                 //show alert
-                print("failed")
+                Logger.logError("Failed to init Camer!!")
             }
         }else{
             //show alert
+            Logger.logError("Permission not Granted!!")
         }
     }
     
     func flipCamera(){
-        mediaManager.changePosition()
-        
-        startCamera()
+//        mediaManager.flipCamera(rearCameraPosition: false)
     }
 }
