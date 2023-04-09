@@ -45,7 +45,7 @@ const getFeed = async (req, res) => {
             documents.push(curr);
         }
         recommender.train(documents);
-        const similarDocuments = recommender.getSimilarDocuments(queryPost[0].id, 0, 20);
+        const similarDocuments = recommender.getSimilarDocuments(queryPost[0].id, 0, 100);
         result = gettingPosts(posts, similarDocuments);
 
         return res.status(200).json({ success: true, result });
