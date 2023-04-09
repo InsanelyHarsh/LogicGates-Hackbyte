@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:android/views/tab_bars/camera_recorder.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -109,6 +110,16 @@ class LoginState extends State<Login> {
                       child: const Text('Dont have a account? Create one',
                           style: TextStyle(color: Colors.grey)),
                     ),
+                    // IconButton(
+                    //   onPressed: () {
+                    //     Navigator.pushAndRemoveUntil(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //             builder: (_) => const CameraRecorder()),
+                    //         (route) => false);
+                    //   },
+                    //   icon: Icon(Icons.save),
+                    // ),
                   ],
                 ),
               ),

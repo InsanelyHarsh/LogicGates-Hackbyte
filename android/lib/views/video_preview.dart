@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:android/api/store_video_firebase.dart';
 import 'package:android/views/tab_bars/home.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -16,6 +17,7 @@ class _VideoPreviewState extends State<VideoPreview> {
   late VideoPlayerController cont;
   final isVisibleAfterVideoOptions = true;
   bool _isPlaying = false;
+  bool isVideoUploading = false;
   Duration _duration = const Duration();
   Duration _position = const Duration();
   @override
@@ -151,10 +153,12 @@ class _VideoPreviewState extends State<VideoPreview> {
                               if (response.isTapConfirmButton) {
                                 // ignore: use_build_context_synchronously
                                 Navigator.pushAndRemoveUntil(
-                                    context, MaterialPageRoute(
-                                  fullscreenDialog: true,
-                                  builder: (_) => const Home(),
-                                ), (route) => false);
+                                    context,
+                                    MaterialPageRoute(
+                                      fullscreenDialog: true,
+                                      builder: (_) => const Home(),
+                                    ),
+                                    (route) => false);
                               } else {}
                             },
                             icon: const Icon(
@@ -164,30 +168,40 @@ class _VideoPreviewState extends State<VideoPreview> {
                           ),
                           IconButton(
                             onPressed: () async {
-                            //   await uploadFile(File(widget.path))
-                            //       .then((value) async {
-                            //     await ArtSweetAlert.show(
-                            //       barrierDismissible: false,
-                            //       context: context,
-                            //       artDialogArgs: ArtDialogArgs(
-                            //         title: 'Uploas Success',
-                            //         text: 'Return back',
-                            //         confirmButtonText: 'Yes, Delete it',
-                            //         type: ArtSweetAlertType.success,
-                            //       ),
-                            //     );
-                            //     // ignore: use_build_context_synchronously
-                            //     Navigator.pushAndRemoveUntil(
-                            //         context, MaterialPageRoute(
-                            //       fullscreenDialog: true,
-                            //       builder: (_) => const Home(),
-                            //     ), (route) => false);
-                            //   });
-                             }, // TODO Save logic
-                            icon: const Icon(
-                              Icons.save,
-                              color: Colors.white,
-                            ),
+                              setState(() {
+                                isVideoUploading = true;
+                              });
+                              await uploadFile(File(widget.path))
+                                  .then((value) async {
+                                setState(() {
+                                  isVideoUploading = false;
+                                });
+                                await ArtSweetAlert.show(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  artDialogArgs: ArtDialogArgs(
+                                    title: 'Uploas Success',
+                                    text: 'Return back',
+                                    confirmButtonText: 'Ok',
+                                    type: ArtSweetAlertType.success,
+                                  ),
+                                );
+                                // ignore: use_build_context_synchronously
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      fullscreenDialog: true,
+                                      builder: (_) => const Home(),
+                                    ),
+                                    (route) => false);
+                              });
+                            }, // TODO Save logic
+                            icon: isVideoUploading
+                                ? const CircularProgressIndicator()
+                                : const Icon(
+                                    Icons.save,
+                                    color: Colors.white,
+                                  ),
                           ),
                         ],
                       ),

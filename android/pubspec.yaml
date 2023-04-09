@@ -41,6 +41,8 @@ dependencies:
   card_swiper: ^2.0.4
   chewie: ^1.4.0
   file_picker: ^5.2.7
+  firebase_core: ^2.9.0
+  firebase_storage: ^11.1.0
 
 dev_dependencies:
   flutter_test:

@@ -3,13 +3,13 @@ import 'package:android/views/login/login.dart';
 import 'package:android/views/login/signup.dart';
 import 'package:android/views/tab_bars/camera_recorder.dart';
 import 'package:android/views/tab_bars/home.dart';
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // kotlin '1.6.10'
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
