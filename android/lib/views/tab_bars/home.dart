@@ -1,9 +1,10 @@
-import 'package:android/views/tab_bars/camera_recorder.dart';
+import 'package:android/models/local_db.dart';
 import 'package:android/views/tab_bars/pick_file.dart';
 import 'package:android/views/tab_bars/search.dart';
 import 'package:android/views/tab_bars/settings.dart';
 import 'package:android/views/video%20feed%20page/video_feed_player.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final localDb=Provider.of<LocalDb>(context,listen: false);
     return Scaffold(
       bottomNavigationBar: TabBar(
         indicatorColor: Colors.black,
@@ -51,11 +53,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: cont,
-        children:const  [
-           VideoFeed(),
-           Search(),
-           PickFile(),
-           Settings(),
+        children:  [
+           const VideoFeed(),
+           const Search(),
+           const PickFile(),
+           Settings(user: localDb.user,),
         ],
       ),
     );

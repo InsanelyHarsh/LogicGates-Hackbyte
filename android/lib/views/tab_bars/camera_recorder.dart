@@ -26,9 +26,6 @@ class _CameraRecorderState extends State<CameraRecorder> {
   @override
   void initState() {
     debugPrint('initialize started');
-    // if (Provider.of<AvailableCameras>(context, listen: false).cameras != null) {
-    //   cameras = Provider.of<AvailableCameras>(context, listen: false).cameras;
-    // }
     loadCamera();
 
     debugPrint('initialize done');
@@ -45,11 +42,6 @@ class _CameraRecorderState extends State<CameraRecorder> {
   loadCamera() async {
     debugPrint('Hello');
     cameras = await availableCameras();
-    // if (cameras == null) {
-    //   cameras = await availableCameras();
-    //   Provider.of<AvailableCameras>(context, listen: false)
-    //       .setAvailableCameras(cameras);
-    // }
     if (cameras != null) {
       if (isFrontCamera) {
         controller = CameraController(cameras![0], ResolutionPreset.max);

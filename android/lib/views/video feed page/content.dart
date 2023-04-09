@@ -1,11 +1,9 @@
-import 'package:chewie/chewie.dart';
+
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
 
 class Content extends StatefulWidget {
   final String url;
-  //final VideoPlayerController videoPlayerController;
   const Content({
     super.key,
     required this.url,

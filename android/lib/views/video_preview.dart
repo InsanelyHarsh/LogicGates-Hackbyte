@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:android/api/store_video_firebase.dart';
+import 'package:android/views/post_preview.dart';
 import 'package:android/views/tab_bars/home.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -31,8 +32,6 @@ class _VideoPreviewState extends State<VideoPreview> {
   void initState() {
     super.initState();
     cont = VideoPlayerController.file(File(widget.path))
-      // cont = VideoPlayerController.network(
-      //     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4')
       ..addListener(() {
         final bool isPlaying = cont.value.isPlaying;
         if (isPlaying != _isPlaying) {
@@ -180,8 +179,8 @@ class _VideoPreviewState extends State<VideoPreview> {
                                   barrierDismissible: false,
                                   context: context,
                                   artDialogArgs: ArtDialogArgs(
-                                    title: 'Uploas Success',
-                                    text: 'Return back',
+                                    title: 'Video Upload Success',
+                                    text: 'Almost There',
                                     confirmButtonText: 'Ok',
                                     type: ArtSweetAlertType.success,
                                   ),
@@ -191,11 +190,12 @@ class _VideoPreviewState extends State<VideoPreview> {
                                     context,
                                     MaterialPageRoute(
                                       fullscreenDialog: true,
-                                      builder: (_) => const Home(),
+                                      builder: (_) =>
+                                          PostPreview(downloadUrl: value),
                                     ),
                                     (route) => false);
                               });
-                            }, // TODO Save logic
+                            }, 
                             icon: isVideoUploading
                                 ? const CircularProgressIndicator()
                                 : const Icon(
@@ -214,82 +214,4 @@ class _VideoPreviewState extends State<VideoPreview> {
     );
   }
 }
-    // Visibility(
-                          //   visible: isVisibleAfterVideoOptions,
-                          //   child: Align(
-                          //     alignment: Alignment.bottomCenter,
-                          //     child: Container(
-                          //       // decoration: BoxDecoration(
-                          //       //   borderRadius: BorderRadius.circular(15),
-                          //       ),
-                          //       child: Padding(
-                          //         padding: const EdgeInsets.symmetric(
-                          //             vertical: 18, horizontal: 3),
-                          //         child: Row(
-                          //           children: [
-                          //             IconButton(
-                          //               onPressed: () async {
-                          //                 ArtDialogResponse response =
-                          //                     await ArtSweetAlert.show(
-                          //                   barrierDismissible: false,
-                          //                   context: context,
-                          //                   artDialogArgs: ArtDialogArgs(
-                          //                     denyButtonText: "Cancel",
-                          //                     title: 'Are You Sure',
-                          //                     text:
-                          //                         'You cant undo this action!',
-                          //                     confirmButtonText:
-                          //                         'Yes, Delete it',
-                          //                     type:
-                          //                         ArtSweetAlertType.warning,
-                          //                   ),
-                          //                 );
-                          //                 if (response == null) {
-                          //                   return;
-                          //                 }
-                          //                 if (response.isTapConfirmButton) {
-                          //                   // TODO store
-                          //                   final route = MaterialPageRoute(
-                          //                     fullscreenDialog: true,
-                          //                     builder: (_) =>
-                          //                         CameraRecorder(),
-                          //                   );
-                          //                   Navigator.pushAndRemoveUntil(
-                          //                       context,
-                          //                       route,
-                          //                       (route) => false);
-                          //                 } else {}
-                          //               },
-                          //               icon: const Icon(
-                          //                 Icons.delete,
-                          //                 size: 40,
-                          //               ),
-                          //             ),
-                          //             IconButton(
-                          //               onPressed: () {
-                          //                 cont
-                          //                     .play()
-                          //                     .onError((error, stackTrace) {
-                          //                   debugPrint('Playing failed');
-                          //                 });
-                          //                 debugPrint('Playing failed2');
-                          //               },
-                          //               icon: const Icon(Icons.play_arrow),
-                          //             ),
-                          //             IconButton(
-                          //               onPressed: () {
-                          //                 cont
-                          //                     .pause()
-                          //                     .onError((error, stackTrace) {
-                          //                   debugPrint('Playing failed');
-                          //                 });
-                          //                 debugPrint('Playing failed2');
-                          //               },
-                          //               icon: const Icon(Icons.pause),
-                          //             ),
-                          //           ],
-                          //         ),
-                          //       ),
-                          //     ),
-                          //   ),
-                          //),
+   

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 
 Future<String> uploadFile(File file) async {
   // Create a reference to the location where you want to upload the file.

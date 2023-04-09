@@ -1,7 +1,10 @@
-import 'dart:developer';
 
-import 'package:android/views/tab_bars/camera_recorder.dart';
+
+import 'package:android/api/auth.dart';
+import 'package:android/models/local_db.dart';
+import 'package:art_sweetalert/art_sweetalert.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -14,6 +17,7 @@ class LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  Auth auth = Auth();
 
   @override
   void dispose() {
@@ -22,9 +26,33 @@ class LoginState extends State<Login> {
     super.dispose();
   }
 
-  void _login() {
+  void _login() async {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+      final ans = await auth.loginUser({
+        'email': _emailController.text,
+        'password': _passwordController.text
+      });
+      // ignore: use_build_context_synchronously
+      final localDb = Provider.of<LocalDb>(context,listen: false);
+      debugPrint('return');
+      //print(ans);
+      if (ans['success'] == true) {
+        await localDb.saveUserDetailsToLocalDb(ans);
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+      } else {
+        // ignore: use_build_context_synchronously
+        await ArtSweetAlert.show(
+          barrierDismissible: false,
+          context: context,
+          artDialogArgs: ArtDialogArgs(
+            title: 'Login Failed',
+            text: 'Return back',
+            confirmButtonText: 'Ok',
+            type: ArtSweetAlertType.danger,
+          ),
+        );
+      }
     }
   }
 
@@ -44,6 +72,15 @@ class LoginState extends State<Login> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
+                      'Welcome to Spotlight',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.italic),
+                    ),
+                    const SizedBox(height: 20,),
+                    const Text(
                       'Login',
                       style: TextStyle(
                           color: Colors.black,
@@ -61,8 +98,10 @@ class LoginState extends State<Login> {
                             borderRadius: BorderRadius.circular(20)),
                       ),
                       validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your email';
+                        if (value!.isEmpty ||
+                            value.length < 14 ||
+                            !value.contains('@gmail.com')) {
+                          return 'Please enter correct email';
                         }
                         return null;
                       },
@@ -77,15 +116,15 @@ class LoginState extends State<Login> {
                             borderRadius: BorderRadius.circular(20)),
                       ),
                       validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your password';
+                        if (value!.isEmpty || value.length < 6) {
+                          return 'Please enter your password or longer password';
                         }
                         return null;
                       },
                     ),
                     const SizedBox(height: 16.0),
                     GestureDetector(
-                      onTap: _login,
+                      onTap: () => _login(),
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 10),
@@ -110,16 +149,6 @@ class LoginState extends State<Login> {
                       child: const Text('Dont have a account? Create one',
                           style: TextStyle(color: Colors.grey)),
                     ),
-                    // IconButton(
-                    //   onPressed: () {
-                    //     Navigator.pushAndRemoveUntil(
-                    //         context,
-                    //         MaterialPageRoute(
-                    //             builder: (_) => const CameraRecorder()),
-                    //         (route) => false);
-                    //   },
-                    //   icon: Icon(Icons.save),
-                    // ),
                   ],
                 ),
               ),

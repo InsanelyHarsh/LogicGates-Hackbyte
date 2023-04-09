@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Search extends StatelessWidget {
+  //List<
   const Search({super.key});
-
   @override
   Widget build(BuildContext context) {
     TextEditingController cont = TextEditingController();
@@ -31,11 +31,19 @@ class Search extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 50,),
             Icon(
               Icons.search,
               size: 60,
               color: Colors.grey[500],
-            )
+            ),
+            Text(
+              'Find Your SpotLight',
+              style: TextStyle(
+                color: Colors.grey[500],
+                fontSize: 30,
+              ),
+            ),
           ],
         ),
       ),
