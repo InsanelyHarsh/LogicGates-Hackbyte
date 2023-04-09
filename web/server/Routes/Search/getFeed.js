@@ -32,12 +32,15 @@ const createRatingMatrix = (users, posts) => {
     }
     return matrix;
 }
-const getInd = (users, id)=>{
-    for(let i =0;i<users.length;i++){
-        if(users.id === id) {
-            
+const getInd = (users, id) => {
+    let result = -1;
+    for (let i = 0; i < users.length; i++) {
+        if (users.id === id) {
+            result = i;
+            break;
         }
     }
+    return result;
 }
 
 const getFeed = async (req, res) => {
@@ -47,8 +50,11 @@ const getFeed = async (req, res) => {
         const posts = await Post.find();
         let ratings = createRatingMatrix(users, posts);
 
-        const coMatrix = recommend.createCoMatrix(ratings,users.length,posts.length);
-        const result = recommend.getRecommendations(ratings,coMatrix,id)
+        const coMatrix = recommend.createCoMatrix(ratings, users.length, posts.length);
+        const userInd = getInd(users, id);
+        const result = recommend.getRecommendations(ratings, coMatrix, userInd);
+        console.log(result);
+        return res.status(200).json({ success: true, result });
 
 
     } catch (err) {
