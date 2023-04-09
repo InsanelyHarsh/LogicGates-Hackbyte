@@ -70,4 +70,8 @@ final class UserRecordManager{
             UserDefaults.standard.removeObject(forKey: Constants.userTypeKey)
         }
     }
+    
+    static var userToken:String?{
+        UserDefaults.standard.string(forKey: Constants.userLoginToken)
+    }
 }

@@ -45,4 +45,10 @@ enum URLData:String{
     
     ///id, auth in header
     case getPostByID = "https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app/api/post/getpost"
+    
+    
+    ///auth Token & searchString in header
+    
+    case searchUser = "https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app/api/search/users"
+    case searchPost = "https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app/api/search/posts"
 }
