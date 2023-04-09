@@ -1,0 +1,11 @@
+# Backend (Developed in Js with ExpressJs)
+
+## We utilized the following libraries in our project:
+<ul>
+<li><strong> Express: </strong> Our chosen framework library for building our web application </li>
+<li><strong> BcryptJs: </strong> Used for securely hashing user credentials to enhance security </li>
+<li><strong> JSON web token: </strong> Employed for issuing authentication tokens, making the authentication process easier and more secure</li>
+<li><strong> content-based-recommender: </strong> Integrated for recommending and serving personalized feeds on the homepage, enhancing the user experience. </li>
+</ul>
+
+<hr/>
