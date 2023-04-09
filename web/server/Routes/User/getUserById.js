@@ -1,9 +1,9 @@
 const User = require('../../models/User')
 
-const getUserById = (req, res) => {
+const getUserById = async (req, res) => {
     try {
         const id = req.headers.id;
-        const user = User.findById(id);
+        const user = await User.findById(id);
         if (!user) {
             return res.status(404).json({ success: false, message: "User not found" });
         }
