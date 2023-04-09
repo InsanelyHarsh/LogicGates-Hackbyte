@@ -13,7 +13,9 @@ app.use(cors());
 
 app.use('/api/user', require('./Routes/User'));
 
-app.use('/api/post', require('./Routes/Post'))
+app.use('/api/post', require('./Routes/Post'));
+
+app.use('/api/search', require('./Routes/Search'));
 
 
 app.use('/', (req, res) => {
