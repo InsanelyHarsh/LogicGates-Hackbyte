@@ -24,17 +24,17 @@ router.post('/login', body('email').isEmail(), Login);
 // @desc Edit User
 // @data {can be any filed other than password}
 // @access private
-router.put('/edit', editUser);
+router.put('/edit', fetchUser,editUser);
 
 // @desc Change Password
 // @data {oldPassword, newPassword}
 // @access private
-router.post('/changepassword', body('oldPassword').isStrongPassword(), body('newPassword').isStrongPassword(), changePassword)
+router.post('/changepassword', body('oldPassword').isStrongPassword(), body('newPassword').isStrongPassword(), fetchUser,changePassword)
 
 // @desc get user by email
 // @data {email}
 // @access only to users 
-router.get('/getuserbyemail', getUserByEmail)
+router.get('/getuserbyemail', fetchUser,getUserByEmail)
 
 // @desc update preferences
 // @data {preferences:[]}
