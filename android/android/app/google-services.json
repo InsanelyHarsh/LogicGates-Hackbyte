@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "468058693597",
+    "project_id": "hackbyte-f169a",
+    "storage_bucket": "hackbyte-f169a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468058693597:android:8f7392f896fb3133d82034",
+        "android_client_info": {
+          "package_name": "com.example.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468058693597-83r8a1sb2pevg8c8hssvsnegfm715hht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnI5OPzqPaKnmXQbcPQEH5ewlDRdKbZt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468058693597-83r8a1sb2pevg8c8hssvsnegfm715hht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
