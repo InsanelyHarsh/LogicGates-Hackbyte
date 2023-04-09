@@ -2,7 +2,7 @@ const Post = require('../../models/Post')
 
 const editPostById = async (req, res) => {
     try {
-        const id = req.headers.id;
+        const id = req.user.id;
         const user = req.user;
         const editedPost = req.body;
         const post = await Post.findById(id);

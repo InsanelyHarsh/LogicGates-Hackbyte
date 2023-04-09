@@ -15,6 +15,7 @@ const filter = (posts, searchTags) => {
         let curr = {
             weight: count,
             postId: element.id,
+            title: element.title
         }
         result.push(curr);
 
