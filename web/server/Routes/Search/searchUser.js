@@ -11,19 +11,24 @@ const filter = (users, searchTags) => {
         currTags.push(element.username);
         currTags = Array.from(new Set(currTags));
         let count = 0;
+        console.log(currTags);
         for (let j = 0; j < currTags.length; j++) {
             for (let k = 0; k < searchTags.length; k++) {
-                if (element.tags[j] === searchTags[k]) count += 1;
+                if (currTags[j]=== searchTags[k]) {
+                    count = count + 1;
+                }
             }
         }
         let curr = {
             weight: count,
             userId: element.id,
+            name: element.name,
+            username: element.username
         }
         result.push(curr);
 
     }
-   
+
     return result;
 
 }

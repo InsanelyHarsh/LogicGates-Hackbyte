@@ -7,6 +7,7 @@ const editUser = require('./User/editUser');
 const changePassword = require('./User/changePassword');
 const getUserByEmail = require('./User/getUserByEmail');
 const updatePreferences = require('./User/updatePreferences');
+const getUserById = require('./User/getUserById');
 
 const router = express.Router();
 
@@ -24,17 +25,19 @@ router.post('/login', body('email').isEmail(), Login);
 // @desc Edit User
 // @data {can be any filed other than password}
 // @access private
-router.put('/edit', fetchUser,editUser);
+router.put('/edit', fetchUser, editUser);
+
+router.get('/getUserById', fetchUser, getUserById);
 
 // @desc Change Password
 // @data {oldPassword, newPassword}
 // @access private
-router.post('/changepassword', body('oldPassword').isStrongPassword(), body('newPassword').isStrongPassword(), fetchUser,changePassword)
+router.post('/changepassword', body('oldPassword').isStrongPassword(), body('newPassword').isStrongPassword(), fetchUser, changePassword)
 
 // @desc get user by email
 // @data {email}
 // @access only to users 
-router.get('/getuserbyemail', fetchUser,getUserByEmail)
+router.get('/getuserbyemail', fetchUser, getUserByEmail)
 
 // @desc update preferences
 // @data {preferences:[]}

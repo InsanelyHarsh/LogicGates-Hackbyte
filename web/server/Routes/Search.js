@@ -1,4 +1,5 @@
 const fetchUser = require('../middlewares/fetchUser');
+const getFeed = require('./Search/getFeed');
 const searchPosts = require('./Search/searchPosts');
 const searchUser = require('./Search/searchUser');
 
@@ -11,4 +12,7 @@ router.get('/posts', fetchUser, searchPosts)
 
 //search for users
 router.get('/users', fetchUser, searchUser);
+
+//getting feed
+router.get('/feed', fetchUser, getFeed);
 module.exports = router;
