@@ -11,29 +11,38 @@ enum CurrentUserSession:String{
     case onBoarding = "ONBOARDING_USERDEFAULT_KEY" //Checks wheather user has seen onboarding or not.
     case login = "USER_LOGIN_USERDEFAULT_KEY" //Checks wheather user is logged in/out.
     case home = "HOME_USERDEFAULT_KEY"
-    case showDataRetrieval = "DID_DATA_RETRIEVAL_REQUIRED_USERDEFAULT_KEY" //show data retierval screen/msg(s) if data has to
 }
 
 
 struct Constants{
     static var userSessionKey:String = "CURRENT_USER_SESSION_KEY---[USER_DEFAULT_KEY]"
 
-    static var teacherLoginToken:String = "TEACHER_LOGIN_TOKEN"
+    static var userLoginToken:String = "USER_LOGIN_TOKEN"
+    static var userNameKey:String = "USER_NAME_KEY"
+    static var nameKey:String = "NAME_KEY"
+    static var userEmailKey:String = "USER_EMAIL_KEY"
+    static var userTypeKey:String = "USER_TYPE_KEY"
     
-    
-    static var baseURL:String = "https://edp-project.vercel.app/"
+    static var baseURL:String = "https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app"
     
     static var lastClassAttendanceDetail:String = "LAST_CLASS_ATTENDANCE_DETAIL"
 }
 
 
 enum URLData:String{
-    case login = "https://upasthit-backend.vercel.app/api/teacher/login"
+    
+    //https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app
+    case login = "https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app/api/user/login"
+    case createNewAccount = "https://logic-gates-hackbyte-1.vercel.app/api/user/create"
+    
     case forgotPassword = "https://upasthit-backend.vercel.app/api/teacher/forgotpassword"
     
-    case createNewAccount = "https://upasthit-backend.vercel.app/api/teacher/createTeacher"
-    case getTeacherDetails = "https://upasthit-backend.vercel.app/api/teacher/findTeacher"
+    ///auth Token in header
+    case createPost = "https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app/api/post/create"
     
-    case createNewCourse = "https://upasthit-backend.vercel.app/api/course/createCourse"
-    case editCourse = "https://upasthit-backend.vercel.app/api/course/editCourse"
+    ///id, auth in header
+    case editPost = "https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app/api/post/editpost"
+    
+    ///id, auth in header
+    case getPostByID = "https://logic-gates-hackbyte-1-git-main-janmesh799.vercel.app/api/post/getpost"
 }

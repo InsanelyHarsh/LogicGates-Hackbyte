@@ -19,16 +19,23 @@ struct SearchView: View {
                         .frame(width: 100, height: 100)
                         .opacity(0.4)
                     
-                    Text("Sport Talent!")
+                    Text("Spot Talent!")
                 }
             }else{
                 List{
                     ForEach(searchResult,id:\.self) { value in
-                        Text(value)
+                        NavigationLink(value: "userprofileview"){
+                            Text(value)
+                        }
                     }
                 }
             }
         }
+        .navigationDestination(for: String.self, destination: { value in
+            if(value == "userprofileview"){
+                UserProfileView(userInfo: UserRecordManager.dummyData)
+            }
+        })
         .searchable(text: $searchField, placement: .automatic, prompt: Text("Search"))
     }
 }

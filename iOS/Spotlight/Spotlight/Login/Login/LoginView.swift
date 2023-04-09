@@ -18,10 +18,28 @@ struct LoginView: View {
     let action:()->Void
     var body: some View {
         ZStack{
+            if(loginVM.isLoading){
+                VStack(spacing: 15){
+                    ProgressView("Almost There..")
+                    
+                    Button {
+                        self.loginVM.isLoading = false
+                        loginVM.loginTask.cancel()
+                    } label: {
+                        Text("Cancel")
+                    }.buttonStyle(.bordered)
+
+                }
+                .frame(maxWidth: .infinity,maxHeight: .infinity)
+                .background{
+                    Color.clear.ignoresSafeArea()
+                }
+            }
+            
             VStack(spacing: 30){
                 
                 VStack(spacing:10){
-                    CustomField(text: $loginVM.email, emptyField: "EMail", fieldName: "Login", keyBoardType: .default) {
+                    CustomField(text: $loginVM.email, emptyField: "Email", fieldName: "Login", keyBoardType: .default) {
                         
                     }
                     
@@ -48,11 +66,14 @@ struct LoginView: View {
                 
                 
                 CustomButton(buttonTitle: "Login") {
-//                    Task{
-//                        await self.loginVM.login()
-//                    }
-                    self.loginFlowRouter.goToMainLoginView()
-                    self.sessionManager.loginCompleted()
+                    loginVM.loginTask = Task{
+                        await self.loginVM.login()
+                        
+                        if(loginVM.isValidCredentials){
+                            self.loginFlowRouter.goToMainLoginView()
+                            self.sessionManager.loginCompleted()
+                        }
+                    }
                 }
                 .bold()
                 .frame(maxWidth: .infinity)
@@ -62,9 +83,12 @@ struct LoginView: View {
                 Spacer()
             }
             .padding(.vertical)
+            .blur(radius: self.loginVM.isLoading ? 0.5 : 0)
         }
         .navigationTitle("Login")
-
+        .alert(isPresented: $loginVM.showAlert){
+            loginVM.alert
+        }
 
     }
 }
