@@ -29,18 +29,18 @@ struct CaptureMediaView: View {
             }
             .ignoresSafeArea()
         }
-        .overlay(alignment: .topTrailing, content: {
-            Button {
-                dismiss.callAsFunction()
-            } label: {
-                Image(systemName: "xmark.circle")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .tint(.red)
-                    .padding(15)
-            }
-
-        })
+//        .overlay(alignment: .topTrailing, content: {
+//            Button {
+//                dismiss.callAsFunction()
+//            } label: {
+//                Image(systemName: "xmark.circle")
+//                    .resizable()
+//                    .frame(width: 40, height: 40)
+//                    .tint(.red)
+//                    .padding(15)
+//            }
+//
+//        })
         .overlay(alignment: .bottom){
             HStack(){
                 Button {

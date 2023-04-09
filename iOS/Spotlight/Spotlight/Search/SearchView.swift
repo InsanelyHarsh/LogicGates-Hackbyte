@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State var searchField:String = ""
-    @State var searchResult:[String] = ["amiharsh_","harsh","realHarsh01"]
+    @StateObject var searchVM:SearchViewModel = SearchViewModel()
     var body: some View {
         VStack{
-            if(searchField.isEmpty){
+            if(searchVM.searchQuery.isEmpty){
                 VStack{
                     Image(systemName: "sparkle.magnifyingglass")
                         .resizable()
@@ -22,26 +21,52 @@ struct SearchView: View {
                     Text("Spot Talent!")
                 }
             }else{
+                
+                
+                
                 List{
-                    ForEach(searchResult,id:\.self) { value in
+                    Picker("What is your favorite color?", selection: $searchVM.searchCategory) {
+                        ForEach(SearchCategory.allCases,id:\.self){ category in
+                            Text(category.title)
+                                .tag(category)
+                                .onTapGesture {
+                                    Logger.logLine()
+                                    Logger.logMessage(category.title)
+                                    Logger.logLine()
+                                }
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    
+                    ForEach(searchVM.searchResult,id:\.self) { value in
                         NavigationLink(value: "userprofileview"){
                             Text(value)
                         }
                     }
-                }
+                }.listStyle(.plain)
             }
         }
+        .task {
+            await searchVM.makeSearchQuery()
+        }
+        .onChange(of: searchVM.searchCategory, perform: { newValue in
+            Task{
+                await searchVM.makeSearchQuery()
+            }
+        })
         .navigationDestination(for: String.self, destination: { value in
             if(value == "userprofileview"){
                 UserProfileView(userInfo: UserRecordManager.dummyData)
             }
         })
-        .searchable(text: $searchField, placement: .automatic, prompt: Text("Search"))
+        .searchable(text: $searchVM.searchQuery, placement: .navigationBarDrawer, prompt: Text("Search"))
     }
 }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        NavigationStack{
+            SearchView()
+        }
     }
 }

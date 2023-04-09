@@ -146,7 +146,7 @@ class NetworkingService{
         }
     }
     
-    func getJSON<T:Decodable>(url urlString:String,type:T.Type,authToken:String="")async throws -> T{
+    func getJSON<T:Decodable>(url urlString:String,type:T.Type,authToken:String="",headerContent:[String:String] = [:])async throws -> T{
         
         do{
             var request = try makeRequest(url: urlString)
@@ -157,6 +157,11 @@ class NetworkingService{
             if(!authToken.isEmpty){
                 request.setValue(authToken, forHTTPHeaderField: "authToken")
             }
+            
+            for (headerTitle, headerValue) in headerContent {
+                request.setValue(headerValue, forHTTPHeaderField: headerTitle)
+            }
+
             
             let (data,response) = try await URLSession.shared.data(for: request)
             guard let res = response as? HTTPURLResponse else{
@@ -177,6 +182,9 @@ class NetworkingService{
             throw NetworkingError.unknownError
         }
     }
+    
+    
+    
 }
 
 
