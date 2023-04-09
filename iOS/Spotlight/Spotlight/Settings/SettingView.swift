@@ -14,6 +14,7 @@ struct SettingView: View {
             List {
                 Text("Privacy Terms")
                 Button {
+                    UserRecordManager.removeAllData()
                     sessionManager.signOut()
                 } label: {
                     Text("Log out")

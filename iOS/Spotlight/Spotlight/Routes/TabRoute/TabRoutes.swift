@@ -10,6 +10,7 @@ import Foundation
 
 enum TabRoutes:Hashable{
     case home
+    case search
     case upload
     case settting
     case profile
@@ -19,6 +20,8 @@ enum TabRoutes:Hashable{
         switch self {
         case .home:
             return "Home"
+        case .search:
+            return "Search"
         case .upload:
             return "Upload"
         case .settting:

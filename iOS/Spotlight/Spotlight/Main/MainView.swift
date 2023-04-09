@@ -12,7 +12,7 @@ struct MainView: View {
     @StateObject var tabManager:TabManager = TabManager()
     var body: some View {
         NavigationStack{
-            TabView{
+            TabView(selection: $tabManager.currentTab){
                 HomeView()
                     .tabItem {
                         VStack{
@@ -30,7 +30,7 @@ struct MainView: View {
                             Text("Search")
                         }
                     }
-                
+                    .tag(TabRoutes.search)
                 UploadView()
                     .tabItem {
                         VStack{
@@ -62,7 +62,7 @@ struct MainView: View {
                         }
                 }
             }
-            .sheet(isPresented: $showProfile){
+            .fullScreenCover(isPresented: $showProfile){
                 ProfileView()
             }
 
