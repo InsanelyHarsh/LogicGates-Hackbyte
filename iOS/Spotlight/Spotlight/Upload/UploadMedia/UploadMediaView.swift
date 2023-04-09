@@ -6,87 +6,48 @@
 //
 
 import SwiftUI
-
+import PhotosUI
 struct UploadMediaView: View {
-    
-    @StateObject private var uploadVM = UploadViewModel()
-    @Environment(\.dismiss) private var dismiss
-    
+    @Environment(\.dismiss) var dismiss
+    @StateObject var uploadMediaVM:UploadMediaViewModel = UploadMediaViewModel()
     var body: some View {
-        GeometryReader{ proxy in
-            let size = proxy.size
+        NavigationStack{
             VStack{
-                if(uploadVM.isGranted){
-                    if(uploadVM.feed != nil){
-                        MediaPreview(preview: uploadVM.feed!, size: size)
-                    }
-                    else{
-                        Color.purple.ignoresSafeArea()
-                    }
+                if let picker = uploadMediaVM.picker{
+                    //show selected media
                 }
-                else{
-                    Color.red.ignoresSafeArea()
-                }
-            }
-            .ignoresSafeArea()
-        }
-        .overlay(alignment: .topTrailing, content: {
-            Button {
-                dismiss.callAsFunction()
-            } label: {
-                Image(systemName: "xmark.circle")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .tint(.red)
-                    .padding(15)
-            }
-
-        })
-        .overlay(alignment: .bottom){
-            HStack(){
-                Button {
-                    uploadVM.flipCamera()
-                } label: {
-                    Image(systemName: "repeat.circle")
-                        .resizable()
-                        .frame(width: 35, height: 35)
-                }
-                
                 Spacer()
-                
-                Button {
-                    withAnimation(.default){
-                        uploadVM.isRecording.toggle()
+                PhotosPicker(selection: $uploadMediaVM.picker,matching: .videos) {
+                    HStack{
+                        Image(systemName: "pencil.circle.fill")
+                            .symbolRenderingMode(.multicolor)
+                            .font(.system(size: 30))
+                            .foregroundColor(.accentColor)
+                        
+                        Text("Upload Media")
                     }
-                } label: {
-                    Image(systemName: uploadVM.isRecording ? "record.circle.fill" : "record.circle" )
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .foregroundColor(uploadVM.isRecording ? .red : .white)
                 }
+                .buttonStyle(.borderless)
                 
-                Spacer()
-                
-                Button {
-                } label: {
-                    Image(systemName: "record.circle")
-                        .resizable()
-                        .frame(width: 35, height: 35)
-                }
-                .opacity(0)
             }
-            .padding(.horizontal)
-            .foregroundColor(.white)
-            .padding(.bottom,50)
-
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Show Talent")
+            
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss.callAsFunction()
+                    } label: {
+                        Image(systemName: "xmark.circle")
+                    }.tint(.black)
+                }
+            }
         }
-    .navigationTitle("Settings")
-    .navigationBarTitleDisplayMode(.inline)
-}
+    }
 }
 
-//struct UploadMediaView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UploadMediaView()
-//    }
-//}
+struct UploadMediaView_Previews: PreviewProvider {
+    static var previews: some View {
+        UploadMediaView()
+    }
+}

@@ -8,10 +8,33 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Environment(\.dismiss) var dismiss
     var body: some View {
-        VStack{
-            Text("Hello, World!")
+        NavigationStack{
+            UserProfileView(userInfo: UserRecordManager.getUserRecord)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            dismiss.callAsFunction()
+                        } label: {
+                            Image(systemName: "xmark.circle")
+                        }
+
+                    }
+                    
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            //
+                        } label: {
+                            Image(systemName: "square.and.pencil")
+                        }
+
+                    }
+                }
+                .tint(.black)
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
